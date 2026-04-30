@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init *)",
+      "Read(//Users/talhamirza/**)",
+      "Bash(npm create *)",
+      "Bash(npm install *)"
+    ]
+  }
+}
