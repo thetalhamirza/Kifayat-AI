@@ -1,0 +1,227 @@
+html,
+body,
+#n8n-chat {
+    width: 100%;
+    height: 100%;
+}
+
+.chat-window {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.chat-window.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+:root {
+    /* --- BRANDING & COLORS (Bidfoodhome Green Theme) --- */
+    --chat--color--primary: #5a7422; /* Brand Green */
+    --chat--color--primary-shade-50: #8BC63E; /* Bright Lime Green */
+    --chat--color--primary--shade-100: #1a2807; /* Dark Forest Green */
+    --chat--color--secondary: #8BC63E; /* Match brand green for consistency */
+    --chat--color-secondary-shade-50: #5a7422;
+    
+    --chat--color-white: #ffffff;
+    --chat--color-light: #f9fafb; /* Very light gray background */
+    --chat--color-light-shade-50: #f3f4f6;
+    --chat--color-light-shade-100: #e5e7eb;
+    --chat--color-medium: #9ca3af;
+    --chat--color-dark: #1f2937; /* Dark Slate instead of pure black */
+    --chat--color-disabled: #d1d5db;
+    --chat--color-typing: #5a7422;
+
+    /* --- TYPOGRAPHY --- */
+    --chat--font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* --- LAYOUT & SHAPE --- */
+    --chat--spacing: 1rem;
+    --chat--border-radius: 12px; /* Softer corners */
+    --chat--transition-duration: 0.2s;
+
+    /* --- WINDOW STYLING --- */
+    --chat--window--width: 440px; /* Sleek, compact width */
+    --chat--window--height: 600px; /* Modern proportions */
+    --chat--window--bottom: 25px;
+    --chat--window--right: 25px;
+    --chat--window--z-index: 10000;
+    /* Soft border instead of harsh outline */
+    --chat--window--border: 1px solid rgba(0,0,0,0.08); 
+    --chat--window--border-radius: 30px;
+    
+    /* --- HEADER --- */
+    --chat--header-height: 65px;
+    --chat--header--padding: 16px;
+    --chat--header--background: var(--chat--color-white); /* Clean white header */
+    --chat--header--color: var(--chat--color-dark); /* Dark text on white */
+    --chat--header--border-bottom: 1px solid var(--chat--color-light-shade-100);
+    --chat--heading--font-size: 1.25rem;
+    --chat--subtitle--font-size: 0.9rem;
+
+    /* --- MESSAGES --- */
+    --chat--message--font-size: 0.95rem;
+    --chat--message--padding: 12px 16px;
+    --chat--message--border-radius: 12px;
+    --chat--message-line-height: 1.6;
+    --chat--message--margin-bottom: 12px;
+    
+    /* Bot Message (Gray Bubble) */
+    --chat--message--bot--background: #f3f4f6; 
+    --chat--message--bot--color: #111827;
+    --chat--message--bot--border: none;
+    
+    /* User Message (Brand Color Bubble) */
+    --chat--message--user--background: var(--chat--color--primary);
+    --chat--message--user--color: var(--chat--color-white);
+    
+    /* --- TOGGLE BUTTON (Launcher) --- */
+    --chat--toggle--size: 60px; /* Slightly smaller/cleaner */
+    --chat--toggle--border-radius: 50%;
+    --chat--toggle--background: var(--chat--color--primary);
+    --chat--toggle--color: var(--chat--color-white);
+    
+    /* --- INPUT AREA (The biggest change for modern look) --- */
+    --chat--textarea--height: 50px;
+    --chat--input--background: #ffffff;
+    --chat--input--padding: 12px 16px;
+    --chat--input--border-radius: 0px; /* Pill shape */
+    --chat--input--border: 0px solid #e5e7eb; /* Subtle border (removed) */
+    --chat--input--border-active: 1px solid var(--chat--color--primary);
+    --chat--input--placeholder--font-size: 0.9rem;
+  }
+
+
+
+@font-face {
+	font-family: "Tiempos";
+	src: url("./fonts/TestTiemposText-Regular-BF66457a50cd521.otf") format("opentype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Tiempos";
+	src: url("./fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf") format("opentype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Tiempos";
+	src: url("./fonts/TestTiemposText-Medium-BF66457a508489a.otf") format("opentype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Tiempos";
+	src: url("./fonts/TestTiemposText-Semibold-BF66457a4fed201.otf") format("opentype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Tiempos";
+	src: url("./fonts/TestTiemposText-Bold-BF66457a4f03c40.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+#n8n-chat,
+#n8n-chat *,
+.n8n-chat,
+.n8n-chat * {
+	font-family: "Tiempos", "Times New Roman", serif;
+}
+
+#n8n-chat img,
+#n8n-chat .chat-message img,
+.n8n-chat img,
+.n8n-chat .chat-message img {
+    max-width: 100%;
+    max-height: 240px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
+}
+
+#n8n-chat a,
+.n8n-chat a {
+    color: var(--chat--color--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+}
+
+#n8n-chat a:hover,
+.n8n-chat a:hover {
+    color: var(--chat--color--primary-shade-50);
+}
+
+#n8n-chat a:focus-visible,
+.n8n-chat a:focus-visible {
+    outline: 2px solid var(--chat--color--primary-shade-50);
+    outline-offset: 2px;
+}
+
+#n8n-chat button,
+#n8n-chat .chat-message button,
+#n8n-chat a.button,
+#n8n-chat a.chat-button,
+.n8n-chat button,
+.n8n-chat .chat-message button,
+.n8n-chat a.button,
+.n8n-chat a.chat-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--chat--color--primary);
+    background: var(--chat--color--primary);
+    color: var(--chat--color-white);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#n8n-chat button:hover,
+#n8n-chat .chat-message button:hover,
+#n8n-chat a.button:hover,
+#n8n-chat a.chat-button:hover,
+.n8n-chat button:hover,
+.n8n-chat .chat-message button:hover,
+.n8n-chat a.button:hover,
+.n8n-chat a.chat-button:hover {
+    background: var(--chat--color--primary-shade-50);
+    border-color: var(--chat--color--primary-shade-50);
+}
+
+#n8n-chat button:focus-visible,
+#n8n-chat .chat-message button:focus-visible,
+#n8n-chat a.button:focus-visible,
+#n8n-chat a.chat-button:focus-visible,
+.n8n-chat button:focus-visible,
+.n8n-chat .chat-message button:focus-visible,
+.n8n-chat a.button:focus-visible,
+.n8n-chat a.chat-button:focus-visible {
+    outline: 2px solid var(--chat--color--primary-shade-50);
+    outline-offset: 2px;
+}
+

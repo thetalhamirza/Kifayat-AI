@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kifayat AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="n8n-chat"></div>
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://n8n.autom8n.site/webhook/8879a756-c404-4077-beae-c2848370b13c/chat',
+            webhookConfig: {
+                method: 'POST',
+                headers: {}
+            },
+            target: '#n8n-chat',
+            mode: 'fullscreen',
+            chatInputKey: 'chatInput',
+            chatSessionKey: 'sessionId',
+            loadPreviousSession: false,
+            metadata: {},
+            showWelcomeScreen: false,
+            defaultLanguage: 'en',
+            initialMessages: [
+                'Hi there! 👋',
+                'Welcome to Kifayat AI 🛍️',
+                'Can you please share your email so I can look you up in the system? 🔍 🛍️'
+            ],
+            i18n: {
+                en: {
+                    title: 'Kifayat AI',
+                    subtitle: "Find the best deals across multiple platforms. Happy Shopping! 🛒 🛍️ ",
+                    footer: '',
+                    getStarted: 'New Conversation',
+                    inputPlaceholder: 'Search for products...',
+                },
+            },
+            enableStreaming: true
+        });
+    </script>
+    
+
+
+</body>
+</html>
